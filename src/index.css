@@ -10,7 +10,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.app-container {
+.site-wrapper {
   max-width: 600px;
   margin: 0 auto;
 }
@@ -58,3 +58,9 @@ header {
   font-size: 0.875rem;
 }
 
+/* Footer */
+
+.footer {
+  background-color: #0F1A2B;
+  height: 60px;
+}
