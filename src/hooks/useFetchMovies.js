@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-function useFetchMovies(endpoint) {
+function useFetchMovies(endpoint, params = {}) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -13,7 +13,12 @@ function useFetchMovies(endpoint) {
 
     async function fetchData() {
       try {
-        const res = await fetch(`https://api.themoviedb.org/3/${endpoint}?api_key=${API_KEY}`)
+        const queryParams = new URLSearchParams({
+          api_key: API_KEY,
+          ...params
+        })
+
+        const res = await fetch(`https://api.themoviedb.org/3/${endpoint}?${queryParams.toString()}`)
 
         if (!res.ok) {
           throw new Error("Something went wrong, please try again")
@@ -30,7 +35,7 @@ function useFetchMovies(endpoint) {
     }
 
     fetchData()
-  }, [endpoint])
+  }, [endpoint, JSON.stringify(params)])
 
   return {data, loading, error}
 }
