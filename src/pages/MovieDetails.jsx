@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MovieDetails() {
+export default function MovieDetails() {
   return (
     <div>
       Movie details
@@ -8,4 +8,3 @@ function MovieDetails() {
   )
 }
 
-export default MovieDetails

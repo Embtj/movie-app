@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Watchlist() {
+export default function Watchlist() {
   return (
     <div>
       Watchlist
@@ -8,4 +8,3 @@ function Watchlist() {
   )
 }
 
-export default Watchlist
