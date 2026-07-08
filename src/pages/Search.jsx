@@ -7,11 +7,16 @@ export default function Search() {
   const [searchParams] = useSearchParams()
   const query = searchParams.get("q")
 
-  const { data, loading, error } = useFetchMovies("/search/movie", { query })
+  const { data, loading, error } = useFetchMovies("search/movie", { query })
+
+  if (!query || !query.trim()) {
+    return <p>Please enter a search term.</p>
+  }
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>{error}</p>
   if (!data) return null
+  if (data.results.length === 0) return <p>No results found for "{query}". Try a different search.</p>
 
   return (
     <div>
