@@ -22,7 +22,7 @@ export default function MovieDetails() {
       <ul className="genre-list">
         {data.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
       </ul>
-      <p className="movie-tagline">{data.tagline.toUpperCase()}</p>
+      {data.tagline && <p className="movie-tagline">{data.tagline.toUpperCase()}</p>}
       <p className="movie-overview">{data.overview}</p>
       <button type="button">Add to watchlist</button>
     </div>
