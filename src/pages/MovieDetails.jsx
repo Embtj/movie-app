@@ -1,14 +1,18 @@
-import React from 'react'
+import { useContext } from 'react'
 import { useParams } from "react-router"
 import useFetchMovies from '../hooks/useFetchMovies'
+import { WatchlistContext } from '../components/WatchlistProvider'
 
 export default function MovieDetails() {
   const { id } = useParams()
   const { data, loading, error } = useFetchMovies(`movie/${id}`)
+  const { watchlist, addToWatchlist, removeFromWatchlist } = useContext(WatchlistContext)
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>{error}</p>
   if (!data) return null
+
+  const isInWatchlist = watchlist.some((movie) => movie.id === data.id)
 
   return (
     <div className="movie-details-container">
@@ -24,7 +28,14 @@ export default function MovieDetails() {
       </ul>
       {data.tagline && <p className="movie-tagline">{data.tagline.toUpperCase()}</p>}
       <p className="movie-overview">{data.overview}</p>
-      <button type="button">Add to watchlist</button>
+      <button type="button" 
+      onClick={() => 
+        isInWatchlist 
+          ? removeFromWatchlist(data.id) 
+          : addToWatchlist(data)}
+          >
+            {isInWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+          </button>
     </div>
   )
 }
