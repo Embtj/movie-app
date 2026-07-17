@@ -29,15 +29,43 @@ a {
 /* Header */
 
 header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background-color: #0F1A2B;
+  padding: 0 1em;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 60px;
+}
+
+nav {
+  padding-bottom: 1em;
+}
+
+nav ul {
+ list-style: none;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.menu-button svg {
+  font-size: 1.5rem;
 }
 
 .search-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
 }
 
 
