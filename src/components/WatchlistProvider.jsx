@@ -23,12 +23,17 @@ export default function WatchlistProvider({ children }) {
   }, [watchlist])
 
   function addToWatchlist(movie) {
-    console.log("Adding:", movie)
+    const watchlistMovie = {
+      id: movie.id,
+      title: movie.title,
+      poster: movie.poster,
+      year: movie.year
+    }
     // checks if the movie is already in the watchlist by comparing IDs
-    const isInWatchlist = watchlist.some((m) => m.id === movie.id)
+    const isInWatchlist = watchlist.some((m) => m.id === watchlistMovie.id)
 
     if (!isInWatchlist) {
-      setWatchlist((prev) => [...prev, movie])
+      setWatchlist((prev) => [...prev, watchlistMovie])
     }
   }
 

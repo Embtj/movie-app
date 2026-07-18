@@ -8,9 +8,9 @@ export default function MovieGrid({ movies }) {
         <MovieCard
           key={movie.id}
           id={movie.id}
-          poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          poster={movie.poster}
           title={movie.title}
-          year={movie.release_date ? movie.release_date.split("-")[0] : "N/A"}
+          year={movie.year}
         />
       ))}
     </section>
