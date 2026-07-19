@@ -14,7 +14,7 @@ export default function Search() {
     return <p>Please enter a search term.</p>
   }
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <MovieGrid movies={[]} loading={loading} />
   if (error) return <p>{error}</p>
   if (!data) return null
   if (data.results.length === 0) return <p>No results found for "{query}". Try a different search.</p>
@@ -23,7 +23,7 @@ export default function Search() {
 
   return (
     <div>
-      <MovieGrid movies={movies} />
+      <MovieGrid movies={movies} loading={loading} />
     </div>
   )
 }

@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react'
 import { formatMovie } from "../utils/formatMovie"
 import useFetchMovies from '../hooks/useFetchMovies'
 import MovieGrid from '../components/MovieGrid'
+import MovieCardSkeleton from '../components/MovieCardSkeleton'
 
 export default function Home() {
   const { data, loading, error } = useFetchMovies("discover/movie")
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <MovieGrid movies={[]} loading={loading} />
   if (error) return <p>{error}</p>
   if (!data) return null
 
@@ -15,7 +16,7 @@ export default function Home() {
 
   return (
     <section>
-      <MovieGrid movies={movies} />
+      <MovieGrid movies={movies} loading={loading} />
     </section>
   )
 }

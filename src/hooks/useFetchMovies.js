@@ -25,6 +25,7 @@ function useFetchMovies(endpoint, params = {}) {
         }
 
         const data = await res.json()
+        await new Promise(resolve => setTimeout(resolve, 3000))
         setData(data)
         console.log(data)
       } catch (err) {
