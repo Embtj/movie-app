@@ -11,16 +11,18 @@ export default function Header() {
 
   return (
     <header>
-      <div className="header-content">
-        <button onClick={() => setMenuOpen(!menuOpen)} className="menu-button" aria-label="Open menu">
-          <FontAwesomeIcon icon={faBars} />
-        </button>
-        <Link to="/">
-          CineApp
-        </Link>
-        <SearchBar />
+      <div className="site-wrapper">
+        <div className="header-content">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="menu-button" aria-label="Open menu">
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+          <Link to="/">
+            CineApp
+          </Link>
+          <SearchBar />
+        </div>
+        <Navigation menuOpen={menuOpen} />
       </div>
-      <Navigation menuOpen={menuOpen} />
     </header>
   )
 }
