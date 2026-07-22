@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { formatMovie } from "../utils/formatMovie"
 import useFetchMovies from '../hooks/useFetchMovies'
 import MovieGrid from '../components/MovieGrid'
-import MovieCardSkeleton from '../components/MovieCardSkeleton'
 
 export default function Home() {
   const { data, loading, error } = useFetchMovies("discover/movie")
