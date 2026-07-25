@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { Link } from 'react-router'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
 import SearchBar from './SearchBar'
 import Navigation from "./Navigation"
 
@@ -13,15 +11,15 @@ export default function Header() {
     <header>
       <div className="site-wrapper">
         <div className="header-content">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="menu-button" aria-label="Open menu">
-            <FontAwesomeIcon icon={faBars} />
-          </button>
-          <Link to="/">
+          <Navigation 
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+          />
+          <Link to="/" className="logo">
             CineApp
           </Link>
           <SearchBar />
         </div>
-        <Navigation menuOpen={menuOpen} />
       </div>
     </header>
   )
