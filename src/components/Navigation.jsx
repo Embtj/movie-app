@@ -4,6 +4,11 @@ import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { faX } from "@fortawesome/free-solid-svg-icons"
 
 export default function Navigation({ menuOpen, setMenuOpen }) {
+  
+  function handleClickLink() {
+    setMenuOpen(false)
+  }
+
   return (
     <div className="navigation-container">
       <button 
@@ -18,13 +23,13 @@ export default function Navigation({ menuOpen, setMenuOpen }) {
       <nav className={`nav ${menuOpen ? "open" : ""}`}>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link onClick={handleClickLink} to="/">Home</Link>
           </li>
           <li>
-            <Link to="search">Search</Link>
+            <Link onClick={handleClickLink} to="search">Search</Link>
           </li>
           <li>
-            <Link to="watchlist">Watchlist</Link>
+            <Link onClick={handleClickLink} to="watchlist">Watchlist</Link>
           </li>
         </ul>
       </nav>
