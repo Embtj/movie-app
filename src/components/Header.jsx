@@ -2,42 +2,39 @@ import { useState, useEffect } from "react"
 import { Link } from 'react-router'
 import SearchBar from './SearchBar'
 import Navigation from "./Navigation"
+import useMediaQuery from "../hooks/useMediaQuery"
 
 export default function Header() {
 
   const [menuOpen, setMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
 
-  // Close menu after resize
+  const isDesktop = useMediaQuery("(min-width: 768px)")
+
   useEffect(() => {
-    function handleResize() {
-      const isDesktop = window.matchMedia("(min-width: 768px)").matches
-
       if (isDesktop) {
         setMenuOpen(false)
+        setSearchOpen(false)
       }
-    }
-
-    handleResize()
-
-    window.addEventListener("resize", handleResize)
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
+  }, [isDesktop])
 
   return (
     <header>
       <div className="site-wrapper">
-        <div className="header-content">
+        <div className={`header-content ${searchOpen ? "search-open" : ""}`}>
           <Navigation 
             menuOpen={menuOpen}
             setMenuOpen={setMenuOpen}
           />
+          {!searchOpen &&
           <Link to="/" className="logo">
             CineApp
           </Link>
-          <SearchBar />
+          }
+          <SearchBar
+            searchOpen={searchOpen}
+            setSearchOpen={setSearchOpen}
+          />
         </div>
       </div>
     </header>

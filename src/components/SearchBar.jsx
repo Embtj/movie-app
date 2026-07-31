@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router"
+import useMediaQuery from "../hooks/useMediaQuery"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
-export default function SearchBar() {
+export default function SearchBar({ searchOpen, setSearchOpen }) {
 
   const [query, setQuery] = useState("")
   const navigate = useNavigate()
+
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -14,17 +19,30 @@ export default function SearchBar() {
     navigate(`/search?${params.toString()}`)
   }
 
+  function handleSearchClick() {
+      setSearchOpen(true)
+  }
+  
+  const shouldSubmit = isDesktop || searchOpen;
 
   return (
-    <form className="search-bar" onSubmit={handleSubmit}>
+    <form className={`search-bar ${searchOpen ? "open" : ""}`} onSubmit={handleSubmit}>
         <input 
           type="text" 
           className="search-input" 
-          placeholder="Batman"
+          placeholder="Search movies..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button type="submit" className="search-btn">Search</button>
+        <button 
+          type={shouldSubmit ? "submit" : "button"}
+          className="search-btn"
+          onClick={shouldSubmit ? undefined : handleSearchClick}
+          aria-expanded={searchOpen}
+          aria-label={shouldSubmit ? "Search" : "Open search"}
+        >
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
       </form>
   )
 }
