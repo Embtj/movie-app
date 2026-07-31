@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from "react-router"
 import useMediaQuery from "../hooks/useMediaQuery"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -8,6 +8,8 @@ export default function SearchBar({ searchOpen, setSearchOpen }) {
 
   const [query, setQuery] = useState("")
   const navigate = useNavigate()
+
+  const inputRef = useRef(null)
 
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
@@ -19,6 +21,12 @@ export default function SearchBar({ searchOpen, setSearchOpen }) {
     navigate(`/search?${params.toString()}`)
   }
 
+  useEffect(() => {
+    if (searchOpen) {
+      inputRef.current?.focus()
+    }
+  }, [searchOpen])
+
   function handleSearchClick() {
       setSearchOpen(true)
   }
@@ -27,7 +35,8 @@ export default function SearchBar({ searchOpen, setSearchOpen }) {
 
   return (
     <form className={`search-bar ${searchOpen ? "open" : ""}`} onSubmit={handleSubmit}>
-        <input 
+        <input
+        ref={inputRef} 
           type="text" 
           className="search-input" 
           placeholder="Search movies..."
