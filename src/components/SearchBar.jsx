@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { useNavigate } from "react-router"
+import { useNavigate, useLocation } from "react-router"
 import useMediaQuery from "../hooks/useMediaQuery"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
@@ -8,6 +8,7 @@ export default function SearchBar({ searchOpen, setSearchOpen }) {
 
   const [query, setQuery] = useState("")
   const navigate = useNavigate()
+  const location = useLocation()
 
   const inputRef = useRef(null)
 
@@ -20,6 +21,12 @@ export default function SearchBar({ searchOpen, setSearchOpen }) {
     const params = new URLSearchParams({ q: query })
     navigate(`/search?${params.toString()}`)
   }
+
+  useEffect(() => {
+    if (location.pathname !== "/search") {
+      setQuery("")
+    }
+  }, [location.pathname])
 
   useEffect(() => {
     if (searchOpen) {
