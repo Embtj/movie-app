@@ -18,6 +18,18 @@ export default function Header() {
       }
   }, [isDesktop])
 
+  useEffect(() => {
+    if(menuOpen) {
+      setSearchOpen(false)
+    }
+  }, [menuOpen]) 
+
+  useEffect(() => {
+    if(searchOpen) {
+      setMenuOpen(false)
+    }
+  }, [searchOpen]) 
+
   return (
     <header>
       <div className="site-wrapper">
