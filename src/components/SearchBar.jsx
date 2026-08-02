@@ -25,8 +25,12 @@ export default function SearchBar({ searchOpen, setSearchOpen }) {
   useEffect(() => {
     if (location.pathname !== "/search") {
       setQuery("")
+
+      if (!isDesktop) {
+        setSearchOpen(false)
+      }
     }
-  }, [location.pathname])
+  }, [location.pathname, isDesktop])
 
   useEffect(() => {
     if (searchOpen) {
