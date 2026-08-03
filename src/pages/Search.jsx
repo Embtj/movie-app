@@ -14,7 +14,14 @@ export default function Search() {
     return <p>Please enter a search term.</p>
   }
 
-  if (loading) return <MovieGrid movies={[]} loading={loading} />
+  if (loading) {
+    return (
+    <>
+      <div className="skeleton-search-results-text skeleton-shimmer"></div>
+      <MovieGrid movies={[]} loading={loading} />
+    </>
+    )
+  }
   if (error) return <p>{error}</p>
   if (!data) return null
   if (data.results.length === 0) return <p>No results found for "{query}". Try a different search.</p>
@@ -23,6 +30,7 @@ export default function Search() {
 
   return (
     <div>
+      <h1 className="search-results-text">Search results for "{query}"</h1>
       <MovieGrid movies={movies} loading={loading} />
     </div>
   )
