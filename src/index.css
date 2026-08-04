@@ -278,6 +278,20 @@ nav ul {
   color: #1A233A;
 }
 
+.movie-details-back-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  text-align: left;
+  margin-bottom: 2em;
+  cursor: pointer
+}
+
+.movie-details-back-btn span {
+  text-decoration: underline;
+}
+
 .movie-details-backdrop {
   width: 100%;
   height: 500px;
@@ -415,6 +429,10 @@ mask-composite: intersect;
     width: 220px;
     margin: 0;
     display: block;
+  }
+
+  .movie-details-back-btn {
+    display: none;
   }
 
   /* Header */
