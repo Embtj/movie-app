@@ -37,7 +37,7 @@ export default function Header() {
           <Navigation 
             menuOpen={menuOpen}
             setMenuOpen={setMenuOpen}
-          />
+          />  
           {!searchOpen &&
           <Link to="/" className="logo">
             CineApp

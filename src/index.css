@@ -44,6 +44,7 @@ a {
 header {
   background-color: #0F1A2B;
   padding: 0 1em;
+  position: relative;
 }
 
 .header-content {
@@ -59,7 +60,6 @@ header {
 
 .navigation-container {
   justify-self: start;
-  position: relative;
   min-width: 0;
 }
 
@@ -71,7 +71,7 @@ header {
   background-color: #0F1A2B;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: -1em;
   width: 100vw;
   z-index: 1;
 
