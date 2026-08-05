@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { useParams, Link, useNavigate } from "react-router"
 import useFetchMovies from '../hooks/useFetchMovies'
 import { WatchlistContext } from '../components/WatchlistProvider'
+import noPosterImage from "../assets/no-poster.jpg"
 
 export default function MovieDetails() {
   const { id } = useParams()
@@ -57,7 +58,7 @@ export default function MovieDetails() {
         <div className="movie-details-left">
           <img
             className="movie-details-poster"
-            src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+            src={data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : noPosterImage}
             alt={`${data.title} poster`}
           />
         </div>
