@@ -231,6 +231,8 @@ nav ul {
 
 .movie-details-poster {
   width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
   border-radius: 10px;
 }
 
@@ -479,11 +481,16 @@ mask-composite: intersect;
     display: block;
   }
 
+  .movie-details-container.no-backdrop {
+    margin-top: 5em;
+  }
+
   .movie-details-container {
     flex-direction: row;
     align-items: flex-start;
     gap: 2em;
-    margin-top: 0;
+    margin-top: 2em;
+    margin-bottom: 5em;
   }
 
   .movie-details-left {

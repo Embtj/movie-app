@@ -44,11 +44,14 @@ export default function MovieDetails() {
 
   return (
     <div className="movie-details-page">
-      <div
-        className="movie-details-backdrop"
-        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})` }}
-      />
-      <div className="movie-details-container">
+      {data.backdrop_path && (
+        <div
+          className="movie-details-backdrop"
+          style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})` }}
+          role="presentation"
+        />
+      )}
+      <div className={`movie-details-container ${!data.backdrop_path ? "no-backdrop" : ""}`}>
         <button
           onClick={() => navigate(-1)}
           className="movie-details-back-btn"
@@ -67,13 +70,15 @@ export default function MovieDetails() {
           <div className="movie-details-info">
             <p>{data.release_date ? data.release_date.split("-")[0] : "N/A"}</p>
             <span>&bull;</span>
-            <p>{data.runtime} mins</p>
+            <p>{data.runtime ? `${data.runtime} mins` : "N/A"}</p>
           </div>
-          <ul className="genre-list">
-            {data.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
-          </ul>
+          {data.genres?.length > 0 && ( 
+            <ul className="genre-list">
+              {data.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
+            </ul>
+          )}
           {data.tagline && <p className="movie-tagline">{data.tagline.toUpperCase()}</p>}
-          <p className="movie-overview">{data.overview}</p>
+          <p className="movie-overview">{data.overview ? data.overview : "No overview available"}</p>
           <button
             className="movie-details-watchlist-btn"
             type="button"
