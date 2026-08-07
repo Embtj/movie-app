@@ -340,10 +340,23 @@ mask-composite: intersect;
 
 .footer {
   background-color: #0F1A2B;
-  height: 60px;
+  text-align: center;
+  padding: 2em;
 }
 
+.tmdb-logo {
+  height: 22px;
+  width: auto;
+}
 
+.tmdb-attribution {
+  font-size: 0.75rem;
+  margin: 0.75em 0;
+}
+
+.copyright-text {
+  font-size: 0.75rem;
+}
 
 
 /* Skeleton Loading */
@@ -572,6 +585,7 @@ mask-composite: intersect;
   }
 
   /* Search bar */
+
   .search-input {
     display: block;
   }
