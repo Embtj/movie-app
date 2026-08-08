@@ -182,6 +182,11 @@ nav ul {
   flex-direction: column;
 }
 
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .movie-card svg {
   font-size: 2rem;
 }
@@ -333,6 +338,43 @@ linear-gradient(
 );
 mask-composite: intersect;
 -webkit-mask-composite: source-in;
+}
+
+/* Watchlist */
+
+.watchlist-heading {
+  text-align: center;
+  margin: 1em;
+}
+
+.watchlist-empty {
+  text-align: center;
+  margin: 2em 1em;
+}
+
+.film-icon {
+  font-size: 3rem;
+  color: #1A233A;
+  margin-bottom: 0.5em;
+}
+
+.watchlist-empty-heading {
+  font-size: 1.25rem;
+  margin-bottom: 0.25em;
+}
+
+.watchlist-empty-text {
+  color: var(--text-secondary);
+  margin-bottom: 2.5em;
+}
+
+.browse-movies-link {
+  text-decoration: underline 2px #4DA3FF;
+  padding: 44px;
+}
+
+.browse-movies-link:hover {
+  text-decoration: underline 4px #4DA3FF;
 }
 
 
